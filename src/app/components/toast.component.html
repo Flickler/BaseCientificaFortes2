@@ -1,0 +1,12 @@
+@switch (type()) {
+  @case ("sucess") {
+    <fortes-icon name="check" color="vividGreenCyan" size="20"/>
+  }
+  @case ("error") {
+    <fortes-icon name="report" color="uiError" size="20"/>
+  }
+  @default {
+    <fortes-icon name="info" color="vividCyanBlue" size="20"/>
+  }
+}
+<ng-content/>

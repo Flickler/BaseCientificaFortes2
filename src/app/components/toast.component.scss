@@ -1,0 +1,33 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $sz-8;
+
+  @include paragraph1;
+
+  padding: $sz-12;
+  width: fit-content;
+  border-radius: $radius-1;
+}
+
+:host.info {
+  color: $vivid-cyan-blue;
+  background-color: $pale-cyan-blue-transparent;
+  border: 1px solid $vivid-cyan-blue;
+}
+
+:host.sucess {
+  color: $vivid-green-cyan;
+  background-color: $vivid-green-cyan-transparent;
+  border: 1px solid $vivid-green-cyan;
+}
+
+:host.error {
+  color: $ui-error;
+  background-color: $ui-error-transparent;
+  border: 1px solid $ui-error;
+}

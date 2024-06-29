@@ -1,0 +1,47 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+input {
+  width: 320px;
+  color: $navi-blue;
+  background-color: $gray-100;
+
+  padding: 0.825rem 3rem;
+
+  outline: none;
+  border: none;
+  border-bottom: 2px solid $navi-blue;
+  border-radius: $radius-1 $radius-1 0 0;
+  transition: $default-transition;
+
+  &::placeholder {
+    color: $navi-blue;
+    @include paragraph3;
+  }
+
+  &:focus {
+    background-color: $white;
+  }
+}
+
+textarea {
+  color: $gray-900;
+  border: 1px solid $gray-400;
+  border-radius: $radius-1;
+  outline: none;
+
+  padding: $sz-8;
+  min-height: 100px;
+  width: 400px;
+}
+
+.form_field {
+  position: relative;
+
+  .input_icon {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+  }
+}

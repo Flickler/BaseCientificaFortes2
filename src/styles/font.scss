@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+@font-face {
+  font-family: "PP Telegraf";
+  src: url(../fonts/PPTelegraf-Ultralight.otf);
+  font-weight: $light;
+}
+
+@font-face {
+  font-family: "PP Telegraf";
+  src: url(../fonts/PPTelegraf-Regular.otf);
+  font-weight: $regular;
+}
+
+@font-face {
+  font-family: "PP Telegraf";
+  src: url(../fonts/PPTelegraf-Ultrabold.otf);
+  font-weight: $bold;
+}

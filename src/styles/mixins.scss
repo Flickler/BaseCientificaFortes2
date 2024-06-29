@@ -1,0 +1,51 @@
+@use "variables" as *;
+
+@mixin display {
+  font-size: $sz-48;
+  font-weight: $bold;
+}
+
+@mixin title1 {
+  font-size: $sz-32;
+  font-weight: $regular;
+}
+
+@mixin title2 {
+  font-size: $sz-28;
+  font-weight: $regular;
+}
+
+@mixin title3 {
+  font-size: $sz-26;
+  font-weight: $regular;
+}
+
+@mixin title4 {
+  font-size: $sz-24;
+  font-weight: $regular;
+}
+
+@mixin subtitle1 {
+  font-size: $sz-20;
+  font-weight: $regular;
+}
+
+@mixin subtitle2 {
+  font-size: $sz-18;
+  font-weight: $regular;
+}
+
+@mixin paragraph1 {
+  font-size: $sz-16;
+  font-weight: $regular;
+}
+
+@mixin paragraph2 {
+  font-size: $sz-16;
+  font-weight: $light;
+}
+
+@mixin paragraph3 {
+  font-size: $sz-14;
+  font-weight: $regular;
+}

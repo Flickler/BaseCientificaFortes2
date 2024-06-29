@@ -7,12 +7,15 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "inlineTemplate": true,
+          "displayBlock": true,
+          "skipTests": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "fortes",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -32,9 +35,14 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/globals.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -95,8 +103,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "69bae8ac-17f3-47b0-bac9-2ee67f879c38",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
