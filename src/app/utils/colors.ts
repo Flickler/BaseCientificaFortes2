@@ -10,3 +10,5 @@ export const gray100 = '#f1f4f9';
 export const gray400 = '#9eb0c7';
 export const gray700 = '#9eb0c7';
 export const gray900 = '#383f47';
+
+export const white = '#FFF';

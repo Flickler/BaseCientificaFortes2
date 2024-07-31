@@ -1,0 +1,22 @@
+@use "variables" as *;
+
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $sz-8;
+
+  color: $navi-blue;
+  background-color: $white;
+  border: 1px solid $navi-blue;
+  border-radius: $radius-1;
+  padding: $sz-20 0;
+  width: 100%;
+
+  &:focus,
+  &:hover {
+    color: $white;
+    background: $navi-blue;
+  }
+}

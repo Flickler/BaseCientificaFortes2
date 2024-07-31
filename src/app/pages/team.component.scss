@@ -5,6 +5,17 @@
   @include start($sz-48);
 }
 
+h1 {
+  color: $gray-900;
+  @include subtitle1;
+  text-align: center;
+}
+
+h2 {
+  color: $gray-400;
+  @include subtitle1;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -12,7 +23,15 @@ header {
   width: $clamp2;
 }
 
-a {
+main,
+section {
+  display: flex;
+  flex-direction: column;
+  gap: $sz-8;
+  width: 100%;
+}
+
+.return_Link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -28,8 +47,10 @@ a {
   }
 }
 
-h1 {
-  color: $gray-400;
-  @include subtitle1;
-  text-align: center;
+.meals_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $sz-8;
+  width: 100%;
 }
