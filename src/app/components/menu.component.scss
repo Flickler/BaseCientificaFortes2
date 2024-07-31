@@ -1,0 +1,59 @@
+@use "variables" as *;
+@use "keyframes" as *;
+
+:host {
+  display: block;
+  position: relative;
+  outline: none;
+  z-index: 1;
+
+  &.active .menu_container {
+    animation: fadein 0.4s ease;
+  }
+}
+
+.menu_trigger {
+  background-color: transparent;
+  border: 1px solid $gray-100;
+  border-radius: 50%;
+  aspect-ratio: 2/1;
+
+  &:focus {
+    color: $gray-700;
+    background: $gray-100;
+    border: 1px solid $gray-700;
+  }
+}
+
+.menu_container {
+  position: absolute;
+  top: 125%;
+  left: -100%;
+  overflow: hidden;
+
+  border-radius: $sz-8;
+  box-shadow: $shadow;
+}
+
+.menu_item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $sz-8;
+
+  color: $gray-700;
+  background-color: $white;
+  border-radius: 0;
+  border: none;
+  padding: $sz-12 $sz-20;
+
+  &:focus {
+    color: $gray-900;
+    background: $gray-100;
+    border: none;
+  }
+
+  & + .menu_item {
+    border-top: 1px solid $gray-400;
+  }
+}

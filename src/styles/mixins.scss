@@ -1,5 +1,31 @@
 @use "variables" as *;
 
+// CONTAINERS
+
+@mixin center($gap: $sz-16) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+
+  padding: $sz-32;
+  height: 100dvh;
+}
+
+@mixin start($gap: $sz-16) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: $gap;
+
+  padding: $sz-32;
+  height: 100dvh;
+}
+
+// FONTS
+
 @mixin display {
   font-size: $sz-48;
   font-weight: $bold;
@@ -27,7 +53,7 @@
 
 @mixin subtitle1 {
   font-size: $sz-20;
-  font-weight: $regular;
+  font-weight: $bold;
 }
 
 @mixin subtitle2 {
@@ -42,7 +68,7 @@
 
 @mixin paragraph2 {
   font-size: $sz-16;
-  font-weight: $light;
+  font-weight: $bold;
 }
 
 @mixin paragraph3 {

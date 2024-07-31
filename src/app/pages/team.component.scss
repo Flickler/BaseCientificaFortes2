@@ -1,0 +1,35 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+:host {
+  @include start($sz-48);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: $clamp2;
+}
+
+a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: $sz-32;
+  width: $sz-32;
+  border-radius: 50%;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    background-color: $gray-100;
+  }
+}
+
+h1 {
+  color: $gray-400;
+  @include subtitle1;
+  text-align: center;
+}

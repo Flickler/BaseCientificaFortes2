@@ -1,0 +1,20 @@
+<button class="menu_trigger">
+  <fortes-icon
+    (click)="menuFacade.toggle()"
+    [name]="menuFacade.active() ? 'close' : 'menu'"
+    color="gray700"
+    size="20"
+  />
+</button>
+@if(menuFacade.active()) {
+<div class="menu_container">
+  <button class="menu_item" (click)="menuFacade.about()">
+    <fortes-icon name="lightbulb" color="gray400" size="20" />
+    <span>Sobre</span>
+  </button>
+  <button class="menu_item" (click)="menuFacade.logout()">
+    <fortes-icon name="logout" color="gray400" size="20" />
+    <span>Sair</span>
+  </button>
+</div>
+}

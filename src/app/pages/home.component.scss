@@ -1,0 +1,21 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+:host {
+  @include start($sz-48);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: $clamp2;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $sz-16;
+  width: 100%;
+}

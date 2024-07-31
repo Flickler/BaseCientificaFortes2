@@ -1,0 +1,18 @@
+@use "variables" as *;
+@use "keyframes" as *;
+
+:host {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: $gray-700;
+  height: 100dvh;
+  width: 100%;
+
+  &.active {
+    display: block;
+    animation: fadein 0.4s ease;
+  }
+}

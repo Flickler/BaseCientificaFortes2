@@ -1,4 +1,4 @@
-import { Component, OnInit, input, signal } from '@angular/core';
+import { Component, OnChanges, input, signal } from '@angular/core';
 
 import { IconColors, IconNames } from '@Types/icons.type';
 
@@ -8,7 +8,7 @@ import { IconColors, IconNames } from '@Types/icons.type';
   templateUrl: 'icon.component.html',
   styleUrl: 'icon.component.scss',
 })
-export class IconComponent implements OnInit {
+export class IconComponent implements OnChanges {
   name = input.required<IconNames>();
   color = input<IconColors>('naviBlue');
   size = input(16, {
@@ -19,7 +19,7 @@ export class IconComponent implements OnInit {
   fill = signal<string | null>(null);
   path = signal<string | null>(null);
 
-  ngOnInit() {
+  ngOnChanges() {
     import('@Utils/icons').then((icons) => this.path.set(icons[this.name()]));
     import('@Utils/colors').then((colors) =>
       this.fill.set(colors[this.color()])

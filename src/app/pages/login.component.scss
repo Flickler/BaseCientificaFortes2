@@ -1,0 +1,24 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+:host {
+  @include center($sz-48);
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $sz-8;
+
+  h1 {
+    @include title1;
+    text-align: center;
+  }
+
+  p {
+    @include paragraph1;
+    color: $gray-700;
+  }
+}

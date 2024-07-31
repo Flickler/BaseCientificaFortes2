@@ -1,0 +1,30 @@
+<div class="agend_heading">
+  <h2>Agenda</h2>
+  <div class="current_hour_container">
+    <fortes-icon name="schedule" color="gray400" size="20" />
+    <span>{{ agendFacade.currHour() }}</span>
+  </div>
+</div>
+
+<div class="agend_content">
+  <button class="agend_action" (click)="agendFacade.previousWeek()">
+    <fortes-icon name="chevronLeft" color="gray400" size="20" />
+  </button>
+  <div class="agend_data">
+    <span>{{ agendFacade.targetWeekText() }}</span>
+    <span>{{ agendFacade.targetDate() }}</span>
+  </div>
+  <button class="agend_action" (click)="agendFacade.nextWeek()">
+    <fortes-icon name="chevronRight" color="gray400" size="20" />
+  </button>
+</div>
+
+<div class="agend_weeks">
+  <button fortesWeekBadge="0">D</button>
+  <button fortesWeekBadge="1">S</button>
+  <button fortesWeekBadge="2">T</button>
+  <button fortesWeekBadge="3">Q</button>
+  <button fortesWeekBadge="4">Q</button>
+  <button fortesWeekBadge="5">S</button>
+  <button fortesWeekBadge="6">S</button>
+</div>

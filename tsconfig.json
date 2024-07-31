@@ -24,6 +24,10 @@
     ],
     "paths": {
       "@Components/*": ["./src/app/components/*"],
+      "@Pages/*": ["./src/app/pages/*"],
+      "@Services/*": ["./src/app/services/*"],
+      "@Directives/*": ["./src/app/directives/*"],
+      "@Guards/*": ["./src/app/guards/*"],
       "@Types/*": ["./src/app/types/*"],
       "@Utils/*": ["./src/app/utils/*"]
     }

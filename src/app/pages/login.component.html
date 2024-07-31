@@ -1,0 +1,35 @@
+<img
+  ngSrc="png/fortesLogomarca.png"
+  height="77"
+  width="260"
+  alt="Fortes engenharia"
+  priority
+/>
+
+<div class="welcome">
+  <h1>Bem vindo!</h1>
+  <p>Informe suas credenciais para continuar</p>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form_field">
+    <fortes-icon name="person" color="naviBlue" size="20" />
+    <input
+      type="text"
+      placeholder="Digite a sua inscrição"
+      formControlName="email"
+    />
+  </div>
+  <div class="form_field">
+    <fortes-icon name="lock" color="naviBlue" size="20" />
+    <input
+      type="password"
+      placeholder="Digite a sua senha"
+      formControlName="password"
+    />
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Acessar</button>
+</form>
+
+<p class="version">Versão 1.0.0</p>
