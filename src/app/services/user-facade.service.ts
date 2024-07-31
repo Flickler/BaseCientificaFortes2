@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 
-import { UserState } from './user-state.service';
+import { UserState } from '@Services/user-state.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +8,6 @@ import { UserState } from './user-state.service';
 export class UserFacade {
   private state = inject(UserState);
 
-  user = this.state.user;
-  setUser = this.state.setUser;
+  FortesUser = this.state.FortesUser;
+  setFortesUser = this.state.setFortesUser;
 }
