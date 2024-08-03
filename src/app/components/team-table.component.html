@@ -1,12 +1,28 @@
-<form [formGroup]="form">
-  <h2>Equipe Setor 1</h2>
-
+<form [formGroup]="formService.form">
   <div class="form_field search">
     <fortes-icon name="personSearch" color="gray400" size="20" />
-    <input type="text" placeholder="Pesquisar..." />
+    <input
+      type="text"
+      id="search"
+      placeholder="Pesquisar..."
+      formControlName="filter"
+    />
   </div>
 
-  <div class="employees_container"></div>
+  <h3>Equipe Setor 1</h3>
+
+  <div class="employees_container" formArrayName="employees">
+    @for(employee of formService.employees.controls; track $index) {
+      <div class="employee">
+        <span class="employee_name">{{ "teste " + ($index + 1) }}</span>
+        <fortes-checkbox
+          [id]="'teste' + $index"
+          [label]="'teste-' + $index"
+          [formControlName]="$index"
+        />
+      </div>
+    }
+  </div>
 
   <div class="details">
     <span>Total</span>

@@ -1,12 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import {
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { IconComponent } from '@Components/icon.component';
+import { LoginFacade } from '@Services/login-facade.service';
 
 @Component({
   selector: 'fortes-login',
@@ -16,16 +13,5 @@ import { IconComponent } from '@Components/icon.component';
   templateUrl: 'login.component.html',
 })
 export default class LoginComponent {
-  private fb = inject(NonNullableFormBuilder);
-  protected form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: [
-      '',
-      [Validators.required, Validators.maxLength(16), Validators.minLength(8)],
-    ],
-  });
-
-  onSubmit() {
-    console.log(this.form.value);
-  }
+  protected loginFacade = inject(LoginFacade);
 }

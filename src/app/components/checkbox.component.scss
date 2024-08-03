@@ -1,0 +1,15 @@
+@use "variables" as *;
+
+:host {
+  display: block;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+  gap: $sz-8;
+}

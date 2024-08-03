@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 
 import { FortesUser } from '@Types/user.type';
 
@@ -6,11 +6,13 @@ import { FortesUser } from '@Types/user.type';
   providedIn: 'root',
 })
 export class UserState {
-  private _FortesUser = signal<FortesUser | null>(null);
+  private _user = signal<FortesUser | null>(null);
 
-  FortesUser = this._FortesUser.asReadonly();
+  id = computed(() => this._user()?.id ?? null);
+  fullName = computed(() => this._user()?.name ?? null);
+  firstName = computed(() => this.fullName()?.split(' ')[0] ?? null);
 
   setFortesUser(FortesUser: FortesUser | null) {
-    this._FortesUser.set(FortesUser);
+    this._user.set(FortesUser);
   }
 }

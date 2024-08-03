@@ -11,7 +11,7 @@
   <p>Informe suas credenciais para continuar</p>
 </div>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginFacade.form" (ngSubmit)="loginFacade.login()">
   <div class="form_field">
     <fortes-icon name="person" color="naviBlue" size="20" />
     <input
@@ -29,7 +29,12 @@
     />
   </div>
 
-  <button type="submit" [disabled]="form.invalid">Acessar</button>
+  <button
+    type="submit"
+    [disabled]="loginFacade.form.invalid || loginFacade.loading()"
+  >
+    Acessar
+  </button>
 </form>
 
 <p class="version">Versão 1.0.0</p>

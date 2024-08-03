@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "mixins" as *;
 
 .search input {
   background-color: transparent;
@@ -8,4 +9,56 @@
   &::placeholder {
     color: $gray-400;
   }
+}
+
+h3,
+.details {
+  color: $gray-700;
+  background-color: $gray-100;
+  @include subtitle1;
+  padding: $sz-12 0 $sz-8 $sz-16;
+
+  width: 100%;
+}
+
+h3 {
+  margin-bottom: -$sz-16;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -$sz-16;
+  padding: $sz-12 $sz-16;
+
+  span:first-child {
+    margin-right: auto;
+  }
+
+  span:last-child {
+    @include subtitle2;
+  }
+}
+
+.employees_container {
+  overflow-y: auto;
+  max-height: 208px;
+  width: 100%;
+}
+
+.employee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: $white;
+  border: 1px solid $gray-100;
+  padding: $sz-8 $sz-16;
+  width: 100%;
+}
+
+.employee_name {
+  color: $gray-400;
+  @include paragraph1;
 }

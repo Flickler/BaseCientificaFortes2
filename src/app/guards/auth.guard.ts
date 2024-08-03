@@ -8,3 +8,7 @@ export const authGuard: CanActivateFn = () => {
     ? true
     : inject(Router).navigate(['login']);
 };
+
+export const notAuthGuard: CanActivateFn = () => {
+  return !inject(LoginFacade).logged() ? true : inject(Router).navigate(['/']);
+};

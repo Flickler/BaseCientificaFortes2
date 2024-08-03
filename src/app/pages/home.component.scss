@@ -19,3 +19,12 @@ main {
   gap: $sz-16;
   width: 100%;
 }
+
+h1 {
+  @include title3;
+}
+
+strong {
+  color: $gray-700;
+  font-weight: $bold;
+}

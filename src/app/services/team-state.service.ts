@@ -1,19 +1,20 @@
 import { Injectable, signal } from '@angular/core';
+import { FortesTeam } from '@Types/team.type';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginState {
-  private _logged = signal(false);
+export class TeamState {
+  private _teams = signal<FortesTeam[]>([]);
   private _loading = signal(false);
   private _error = signal(false);
 
-  logged = this._logged.asReadonly();
+  teams = this._teams.asReadonly();
   loading = this._loading.asReadonly();
   error = this._error.asReadonly();
 
-  setLogged(state: boolean) {
-    this._logged.set(state);
+  updateTeams(teams: FortesTeam[]) {
+    this._teams.set(teams);
   }
 
   setLoading(value: boolean) {

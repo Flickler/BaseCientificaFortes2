@@ -13,16 +13,24 @@ export class AgendState {
     const minute = String(this._currCalendar().getMinutes()).padStart(2, '0');
     return `${hour}:${minute}`;
   });
-
+  
   targetWeek = computed(() => this._targetCalendar().getDay());
   targetWeekText = computed(() => Week[this._targetCalendar().getDay()]);
-
-  targetDate = computed(() => {
+  targetDateISO = computed(() => {
+    const copy = new Date(this._targetCalendar());
+    copy.setHours(-3);
+    return copy.toISOString().split('T')[0]
+  });
+  targetDateText = computed(() => {
     const day = String(this._targetCalendar().getDate()).padStart(2, '0');
     const month = String(this._targetCalendar().getMonth() + 1).padStart(2, '0');
     const year = String(this._targetCalendar().getFullYear()).padStart(2, '0');
     return `${day}/${month}/${year}`;
   });
+
+  constructor() {
+    setInterval(() => this._currCalendar.set(new Date()), 5000)
+  }
 
   nextWeek() {
     this._targetCalendar.set(

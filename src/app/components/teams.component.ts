@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AgendFacade } from '@Services/agend-facade.service';
+
+import { TeamFacade } from '@Services/team-facade.service';
 
 @Component({
   selector: 'fortes-teams',
@@ -9,10 +12,18 @@ import { RouterLink } from '@angular/router';
   template: `
     <h2>Equipes</h2>
     <div class="teams_container">
-      <a routerLink="team">Equipe setor 1</a>
-      <a routerLink="team">Equipe setor 2</a>
-      <a routerLink="team">Equipe setor 3</a>
+      @for(team of teamFacade.teams(); track $index) {
+      <a
+        routerLink="team"
+        [queryParams]="{ id: team.id, date: agendFacade.targetDateISO() }"
+      >
+        {{ team.sector }}
+      </a>
+      }
     </div>
   `,
 })
-export class TeamsComponent {}
+export class TeamsComponent {
+  protected teamFacade = inject(TeamFacade);
+  protected agendFacade = inject(AgendFacade);
+}

@@ -14,9 +14,16 @@
   padding: $sz-20 0;
   width: 100%;
   cursor: pointer;
+  outline: none;
+
+  &:hover {
+    color: $white;
+    background-color: $vivid-cyan-blue;
+    border: 1px solid $vivid-cyan-blue;
+  }
 
   &:focus,
-  &:hover {
+  &.active {
     color: $white;
     background: $navi-blue;
   }

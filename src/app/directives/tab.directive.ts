@@ -1,6 +1,7 @@
 import {
   computed,
   Directive,
+  HostBinding,
   HostListener,
   input,
   signal,
@@ -12,6 +13,8 @@ import { IconNames } from '@Types/icons.type';
   standalone: true,
 })
 export class TabDirective {
+  @HostBinding('tabindex') index = 0;
+
   @HostListener('mouseenter') onMouseEnter() {
     this._hover.set(true);
   }

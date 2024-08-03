@@ -10,7 +10,8 @@ export class AgendFacade {
   currHour = this.state.currHour;
   targetWeek = this.state.targetWeek;
   targetWeekText = this.state.targetWeekText;
-  targetDate = this.state.targetDate;
+  targetDateISO = this.state.targetDateISO;
+  targetDateText = this.state.targetDateText;
 
   nextWeek() {
     this.state.nextWeek();

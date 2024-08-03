@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
+import { Mealfacade } from '@Services/meal-facade.service';
 import { IconComponent } from '@Components/icon.component';
 import { TabComponent } from '@Components/tab.component';
 import { TeamTableComponent } from '@Components/team-table.component';
@@ -18,4 +19,6 @@ import { TeamTableComponent } from '@Components/team-table.component';
   styleUrl: 'team.component.scss',
   templateUrl: 'team.component.html',
 })
-export default class TeamComponent {}
+export default class TeamComponent {
+  private mealFacade = inject(Mealfacade);
+}

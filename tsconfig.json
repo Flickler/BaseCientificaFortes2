@@ -29,7 +29,8 @@
       "@Directives/*": ["./src/app/directives/*"],
       "@Guards/*": ["./src/app/guards/*"],
       "@Types/*": ["./src/app/types/*"],
-      "@Utils/*": ["./src/app/utils/*"]
+      "@Utils/*": ["./src/app/utils/*"],
+      "@Environments/*": ["./src/environments/*"]
     }
   },
   "angularCompilerOptions": {

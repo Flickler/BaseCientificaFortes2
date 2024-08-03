@@ -1,0 +1,26 @@
+<input
+  type="checkbox"
+  [id]="id()"
+  [ngModel]="value"
+  (ngModelChange)="writeValue(!value())"
+  [disabled]="isDisable()"
+/>
+
+<label [attr.for]="id()">
+  @if(!isDisable()) {
+    @if(value()) {
+      <fortes-icon name="checkbox" color="vividGreenCyan" size="20" />
+    }
+    @else {
+      <fortes-icon name="disableByDefault" color="uiError" size="20" />
+    }
+  }
+  @else {
+    @if(value()) {
+      <fortes-icon name="checkbox" color="gray400" size="20" />
+    }
+    @else {
+      <fortes-icon name="disableByDefault" color="gray400" size="20" />
+    }
+  }
+</label>

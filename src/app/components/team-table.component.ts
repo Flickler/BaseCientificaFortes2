@@ -1,17 +1,17 @@
 import { Component, inject } from '@angular/core';
 
-import { TeamTableFacade } from '@Services/team-table-facade.service';
 import { IconComponent } from './icon.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CheckboxComponent } from './checkbox.component';
+import { MealForm } from '@Services/meal-form.service';
 
 @Component({
   selector: 'fortes-team-table',
   standalone: true,
-  imports: [ReactiveFormsModule, IconComponent],
+  imports: [ReactiveFormsModule, IconComponent, CheckboxComponent],
   styleUrl: 'team-table.component.scss',
   templateUrl: 'team-table.component.html',
 })
 export class TeamTableComponent {
-  private teamTableFacade = inject(TeamTableFacade);
-  protected form = this.teamTableFacade.getForm();
+  protected formService = inject(MealForm);
 }
