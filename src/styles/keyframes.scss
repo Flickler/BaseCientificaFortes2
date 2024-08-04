@@ -1,8 +1,22 @@
+@use "variables" as *;
+
 @keyframes fadein {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    background-color: $gray-100;
+  }
+  50% {
+    background-color: $gray-400;
+  }
+  100% {
+    background-color: $gray-100;
   }
 }

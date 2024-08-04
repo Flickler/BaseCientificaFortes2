@@ -1,4 +1,4 @@
-<form [formGroup]="formService.form">
+<form [formGroup]="mealFacade.form">
   <div class="form_field search">
     <fortes-icon name="personSearch" color="gray400" size="20" />
     <input
@@ -12,12 +12,24 @@
   <h3>Equipe Setor 1</h3>
 
   <div class="employees_container" formArrayName="employees">
-    @for(employee of formService.employees.controls; track $index) {
+    @if(mealFacade.loading()) {
+      <fortes-box-loading height="208" />
+    } 
+    
+    @if(mealFacade.error()) {
+      <fortes-box-error height="208">
+        Ops, não foi possivel consultar está refeição. Por favor tente novamente
+        mais tarde.
+      </fortes-box-error>
+    }
+
+    @for(employee of mealFacade.employees.controls; track $index) {
       <div class="employee">
-        <span class="employee_name">{{ "teste " + ($index + 1) }}</span>
+        <span class="employee_name">
+          {{ mealFacade.meals()[$index].team.worker.name }}
+        </span>
         <fortes-checkbox
-          [id]="'teste' + $index"
-          [label]="'teste-' + $index"
+          [id]="mealFacade.meals()[$index].id"
           [formControlName]="$index"
         />
       </div>
@@ -26,8 +38,8 @@
 
   <div class="details">
     <span>Total</span>
-    <span>80</span>
+    <span>{{ mealFacade.quantity() }}</span>
   </div>
 
-  <button type="submit">Editar</button>
+  <button type="submit">Salvar</button>
 </form>

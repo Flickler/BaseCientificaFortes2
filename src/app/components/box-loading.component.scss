@@ -1,0 +1,8 @@
+@use "variables" as *;
+@use "keyframes" as *;
+
+:host {
+  display: block;
+  border-radius: $radius-1;
+  animation: skeleton 2s linear infinite;
+}

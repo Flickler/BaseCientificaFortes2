@@ -3,9 +3,15 @@ import { inject, Injectable } from '@angular/core';
 
 import { environment } from '@Environments/environment';
 import {
+  FortesGetMealCoffee,
+  FortesGetMealDinner,
+  FortesGetMealLunch,
   FortesMealCoffee,
   FortesMealDinner,
   FortesMealLunch,
+  FortesPutMealCoffee,
+  FortesPutMealDinner,
+  FortesPutMealLunch,
 } from '@Types/meal.type';
 
 @Injectable({
@@ -16,29 +22,50 @@ export class MealApi {
   private readonly path = environment.apiUrl + 'meal/';
 
   getCoffee(id: string, date: string) {
-    return this.http.get<FortesMealCoffee[]>(this.path + 'coffee', {
+    return this.http.get<FortesGetMealCoffee[]>(this.path + 'coffee', {
       params: {
-        managerId: id,
+        teamManagementId: id,
         date: date,
       },
     });
   }
 
   getLunch(id: string, date: string) {
-    return this.http.get<FortesMealLunch[]>(this.path + 'lunch', {
+    return this.http.get<FortesGetMealLunch[]>(this.path + 'lunch', {
       params: {
-        managerId: id,
+        teamManagementId: id,
         date: date,
       },
     });
   }
 
   getDinner(id: string, date: string) {
-    return this.http.get<FortesMealDinner[]>(this.path + 'dinner', {
+    return this.http.get<FortesGetMealDinner[]>(this.path + 'dinner', {
       params: {
-        managerId: id,
+        teamManagementId: id,
         date: date,
       },
+    });
+  }
+
+  putCoffee(meals: FortesMealCoffee[], date: string) {
+    return this.http.put<FortesPutMealCoffee>(this.path + 'update-coffee', {
+      coffees: meals,
+      mealDate: date,
+    });
+  }
+
+  putLunch(meals: FortesMealLunch[], date: string) {
+    return this.http.put<FortesPutMealLunch>(this.path + 'update-lunch', {
+      lunches: meals,
+      mealDate: date,
+    });
+  }
+
+  putDinner(meals: FortesMealDinner[], date: string) {
+    return this.http.put<FortesPutMealDinner>(this.path + 'update-dinner', {
+      dinners: meals,
+      mealDate: date,
     });
   }
 }

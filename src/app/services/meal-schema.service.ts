@@ -1,21 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { FortesCheckbox } from '@Types/forms.type';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MealForm {
+export class MealSchema {
   private _fb = inject(FormBuilder);
   private _form = this._fb.group({
     filter: this._fb.control(''),
-    employees: this._fb.array([
-      this._fb.control(true),
-      this._fb.control(true),
-      this._fb.control(true),
-      this._fb.control(true),
-      this._fb.control(true),
-      this._fb.control(true),
-    ]),
+    employees: this._fb.array<boolean>([]),
   });
 
   get form() {
@@ -30,11 +24,15 @@ export class MealForm {
     return this.form.controls.employees;
   }
 
-  getForm() {
-    return this.form;
+  setEmployees(employees: FortesCheckbox[]) {
+    employees.forEach((e) => this.employees.push(this._fb.control(e.status)));
   }
 
-  submit() {
-    //
+  clearEmployees() {
+    this.employees.clear();
+  }
+
+  getForm() {
+    return this.form;
   }
 }
