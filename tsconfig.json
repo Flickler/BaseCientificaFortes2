@@ -27,6 +27,7 @@
       "@Pages/*": ["./src/app/pages/*"],
       "@Services/*": ["./src/app/services/*"],
       "@Directives/*": ["./src/app/directives/*"],
+      "@Pipes/*": ["./src/app/pipes/*"],
       "@Guards/*": ["./src/app/guards/*"],
       "@Types/*": ["./src/app/types/*"],
       "@Utils/*": ["./src/app/utils/*"],

@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: '',
+  apiUrl: 'https://github.com/jacinoberto/MealControlAPI/api/',
 };

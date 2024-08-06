@@ -11,7 +11,7 @@ export class MenuDirective {
     return this.menuFacade.active();
   }
   @HostListener('focusout') close() {
-    this.menuFacade.close();
+    setTimeout(() => this.menuFacade.close(), 100);
   }
   private menuFacade = inject(MenuFacade);
 }

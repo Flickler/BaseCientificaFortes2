@@ -1,0 +1,79 @@
+<header>
+  <h1>
+    <img
+      ngSrc="png/fortesLogomarca.png"
+      height="49"
+      width="160"
+      alt="Fortes engenharia"
+      priority
+    />
+  </h1>
+  <fortes-menu />
+</header>
+
+<h2>Relatório semanal</h2>
+
+<fortes-week-agend (onAgendChange)="setRange($event)" />
+
+<fortes-select
+  label="Selecione um Encarregado"
+  (onSelectChange)="setManagerId($event.value)"
+  [options]="managers() ?? null"
+/>
+
+@if(data()) {
+  @for(report of data(); track $index) {
+    <div class="relatory_container">
+      <h3>
+        {{ report.manager + ' - ' + report.sector }}
+      </h3>
+    
+      <div class="line contrast">
+        <h4>Programação</h4>
+        <h4>Custo</h4>
+      </div>
+    
+      <div class="line">
+        <div class="group">
+          <fortes-icon name="localCafe" color="naviBlue" size="20" />
+          <p>Café</p>
+        </div>
+        <p>{{ report.costOfCoffee }}</p>
+      </div>
+    
+      <div class="line contrast">
+        <div class="group">
+          <fortes-icon name="restaurant" color="naviBlue" size="20" />
+          <p>Almoço</p>
+        </div>
+        <p>{{ report.costOfLunch }}</p>
+      </div>
+    
+      <div class="line">
+        <div class="group">
+          <fortes-icon name="ramenDining" color="naviBlue" size="20" />
+          <p>Janta</p>
+        </div>
+        <p>{{ report.costOfDinner }}</p>
+      </div>
+    
+      <div class="line">
+        <p>Estimativa da equipe:</p>
+        <p>{{ report.totalTeam }}</p>
+      </div>
+    
+      <h4 class="line">Total</h4>
+    
+      <div class="line contrast">
+        <div class="details_container">
+          <p>Refeições</p>
+          <p>{{ report.coffee + report.lunch + report.dinner }}</p>
+        </div>
+        <div class="details_container">
+          <p>Custo</p>
+          <p>{{ report.costOfCoffee + report.costOfLunch + report.costOfDinner }}</p>
+        </div>
+      </div>
+    </div>
+  }
+}

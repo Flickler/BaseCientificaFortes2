@@ -18,4 +18,9 @@ export const routes: Routes = [
     loadComponent: () => import('@Pages/team.component'),
     canActivate: [authGuard],
   },
+  {
+    path: 'report',
+    loadComponent: () => import('@Pages/report.component'),
+    canActivate: [authGuard],
+  },
 ];

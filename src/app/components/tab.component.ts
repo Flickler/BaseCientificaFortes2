@@ -7,7 +7,9 @@ import { IconComponent } from './icon.component';
   selector: 'fortes-tab',
   standalone: true,
   imports: [TabDirective, IconComponent],
-  hostDirectives: [{ directive: TabDirective, inputs: ['icon', 'label'] }],
+  hostDirectives: [
+    { directive: TabDirective, inputs: ['icon', 'label', 'custom'] },
+  ],
   styleUrl: 'tab.component.scss',
   template: `
     <fortes-icon

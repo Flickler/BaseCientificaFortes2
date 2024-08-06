@@ -22,3 +22,8 @@ export enum Month {
   'Novembro',
   'Dezembro',
 }
+
+export interface WeekAgend {
+  start: Date;
+  end: Date;
+}

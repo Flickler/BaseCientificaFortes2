@@ -14,6 +14,9 @@ import { IconNames } from '@Types/icons.type';
 })
 export class TabDirective {
   @HostBinding('tabindex') index = 0;
+  @HostBinding('class.active') get isActive() {
+    return this.active();
+  }
 
   @HostListener('mouseenter') onMouseEnter() {
     this._hover.set(true);
@@ -36,6 +39,7 @@ export class TabDirective {
 
   icon = input.required<IconNames>();
   label = input.required<string>();
+  custom = input(false);
 
-  active = computed(() => this._hover() || this._focus());
+  active = computed(() => this._hover() || this._focus() || this.custom());
 }

@@ -6,7 +6,12 @@ import { catchError, of, take } from 'rxjs';
 import { MealApi } from '@Services/meal-api.service';
 import { MealState } from '@Services/meal-state.service';
 import { MealSchema } from '@Services/meal-schema.service';
-import { FortesMeal } from '@Types/meal.type';
+import {
+  FortesMeal,
+  FortesMealCoffee,
+  FortesMealDinner,
+  FortesMealLunch,
+} from '@Types/meal.type';
 
 @Injectable({
   providedIn: 'root',
@@ -29,21 +34,35 @@ export class Mealfacade {
   }
 
   meals = computed(() => {
-    if (this.state.mealTarget() === 'coffee') return this.state.coffees();
-    if (this.state.mealTarget() === 'lunch') return this.state.lunches();
+    if (this.mealTarget() === 'coffee') return this.state.coffees();
+    if (this.mealTarget() === 'lunch') return this.state.lunches();
     else return this.state.dinners();
   });
-  quantity = computed(() => this.meals().length);
+  quantity = computed(
+    () =>
+      this.meals().filter((w) => {
+        return (
+          (w as FortesMealCoffee)?.coffee ??
+          (w as FortesMealLunch)?.lunch ??
+          (w as FortesMealDinner)?.dinner
+        );
+      }).length
+  );
 
   loading = this.state.loading;
   error = this.state.error;
   form = this.schema.form;
   employees = this.schema.employees;
+  date = this.state.date;
+  mealTarget = this.state.mealTarget;
+  coffees = this.state.coffees;
+  lunches = this.state.lunches;
+  dinners = this.state.dinners;
 
   private setQueryParams(id: string, date: string) {
     this.state.setId(id);
     this.state.setDate(date);
-    this.getCoffee();
+    this.getCoffee({ imediate: true });
     this.getLunch();
     this.getDinner();
   }
@@ -53,7 +72,7 @@ export class Mealfacade {
     this.state.setDate('');
   }
 
-  private getCoffee() {
+  private getCoffee(options?: { imediate: boolean }) {
     this.state.setError(false);
     this.state.setLoading(true);
 
@@ -69,13 +88,13 @@ export class Mealfacade {
       .subscribe((res) => {
         if (res) {
           this.state.setCoffees(res);
-          this.setEmployees('coffee');
+          if (options?.imediate) this.setEmployees('coffee');
         }
         this.state.setLoading(false);
       });
   }
 
-  private getLunch() {
+  private getLunch(options?: { imediate: boolean }) {
     this.state.setError(false);
     this.state.setLoading(true);
 
@@ -91,10 +110,11 @@ export class Mealfacade {
       .subscribe((res) => {
         if (res) this.state.setLunchs(res);
         this.state.setLoading(false);
+        if (options?.imediate) this.setEmployees('lunch');
       });
   }
 
-  private getDinner() {
+  private getDinner(options?: { imediate: boolean }) {
     this.state.setError(false);
     this.state.setLoading(true);
 
@@ -110,11 +130,22 @@ export class Mealfacade {
       .subscribe((res) => {
         if (res) this.state.setDinners(res);
         this.state.setLoading(false);
+        if (options?.imediate) this.setEmployees('dinner');
       });
   }
 
   setMealTarget(target: FortesMeal) {
     this.state.setMealTarget(target);
+    this.clearEmployees();
+    // has better ways to implement this, don't copy
+    this.state.setLoading(true);
+    setTimeout(() => {
+      this.setEmployees(target);
+      this.state.setLoading(false);
+    }, 200);
+  }
+
+  clearEmployees() {
     this.schema.clearEmployees();
   }
 
@@ -151,37 +182,58 @@ export class Mealfacade {
       );
   }
 
-  submit(target: FortesMeal) {
+  submit() {
     const formValue = this.employees.value;
-    if (target === 'coffee')
-      this.api.putCoffee(
-        this.state.coffees().map((worker, index) => {
-          return {
-            id: worker.id,
-            coffee: formValue[index] ?? true,
-          };
-        }),
-        this.state.date()
-      );
-    if (target === 'lunch')
-      this.api.putCoffee(
-        this.state.lunches().map((worker, index) => {
-          return {
-            id: worker.id,
-            coffee: formValue[index] ?? true,
-          };
-        }),
-        this.state.date()
-      );
-    if (target === 'dinner')
-      this.api.putCoffee(
-        this.state.dinners().map((worker, index) => {
-          return {
-            id: worker.id,
-            coffee: formValue[index] ?? true,
-          };
-        }),
-        this.state.date()
-      );
+    this.state.setLoading(true);
+    this.clearEmployees();
+
+    if (this.mealTarget() === 'coffee')
+      this.api
+        .putCoffee(
+          this.state.coffees().map((worker, index) => {
+            return {
+              id: worker.id,
+              coffee: formValue[index] ?? true,
+            };
+          }),
+          this.state.date()
+        )
+        .pipe(take(1))
+        .subscribe(() => {
+          this.state.setLoading(false);
+          this.getCoffee({ imediate: true });
+        });
+    if (this.mealTarget() === 'lunch')
+      this.api
+        .putLunch(
+          this.state.lunches().map((worker, index) => {
+            return {
+              id: worker.id,
+              lunch: formValue[index] ?? true,
+            };
+          }),
+          this.state.date()
+        )
+        .pipe(take(1))
+        .subscribe(() => {
+          this.state.setLoading(false);
+          this.getLunch({ imediate: true });
+        });
+    if (this.mealTarget() === 'dinner')
+      this.api
+        .putDinner(
+          this.state.dinners().map((worker, index) => {
+            return {
+              id: worker.id,
+              dinner: formValue[index] ?? true,
+            };
+          }),
+          this.state.date()
+        )
+        .pipe(take(1))
+        .subscribe(() => {
+          this.state.setLoading(false);
+          this.getDinner({ imediate: true });
+        });
   }
 }

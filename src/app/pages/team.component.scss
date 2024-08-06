@@ -20,6 +20,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  margin-inline: auto;
   width: $clamp2;
 }
 
@@ -28,7 +30,19 @@ section {
   display: flex;
   flex-direction: column;
   gap: $sz-8;
-  width: 100%;
+
+  margin-inline: auto;
+  width: $clamp2;
+}
+
+p {
+  color: $gray-900;
+  @include paragraph3;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
 }
 
 .return_Link {

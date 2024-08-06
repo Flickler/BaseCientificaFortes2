@@ -6,12 +6,30 @@
 </header>
 <main>
   <section>
-    <h2>Programação</h2>
-    <p>{{ "" }}</p>
+    <div class="heading">
+      <h2>Programação</h2>
+      <p>{{ mealFacade.date() | dateISO }}</p>
+    </div>
+
     <div class="meals_container">
-      <fortes-tab icon="localCafe" label="Café" />
-      <fortes-tab icon="restaurant" label="Almoço" />
-      <fortes-tab icon="ramenDining" label="Janta" />
+      <fortes-tab
+        icon="localCafe"
+        label="Café"
+        [custom]="mealFacade.mealTarget() === 'coffee'"
+        (click)="mealFacade.setMealTarget('coffee')"
+      />
+      <fortes-tab
+        icon="restaurant"
+        label="Almoço"
+        [custom]="mealFacade.mealTarget() === 'lunch'"
+        (click)="mealFacade.setMealTarget('lunch')"
+      />
+      <fortes-tab
+        icon="ramenDining"
+        label="Janta"
+        [custom]="mealFacade.mealTarget() === 'dinner'"
+        (click)="mealFacade.setMealTarget('dinner')"
+      />
     </div>
   </section>
   <section>

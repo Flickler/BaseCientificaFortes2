@@ -1,0 +1,70 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+:host {
+  @include start;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-inline: auto;
+  width: $clamp2;
+}
+
+h2 {
+  align-self: center;
+  color: $gray-700;
+  @include title3;
+}
+
+h3 {
+  color: $white;
+  @include subtitle1;
+  background-color: $gray-400;
+  border-radius: $radius-1;
+  padding: $sz-8 $sz-16 $sz-4 $sz-16;
+  margin-bottom: $sz-16;
+}
+
+h4 {
+  color: $gray-700;
+  @include subtitle2;
+}
+
+.relatory_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-inline: auto;
+  width: $clamp2;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: $radius-1;
+  padding: $sz-16;
+}
+
+.contrast {
+  background-color: $gray-100;
+}
+
+.group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $sz-4;
+}
+
+.details_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $sz-4;
+}

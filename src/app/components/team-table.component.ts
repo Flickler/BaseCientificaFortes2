@@ -6,6 +6,7 @@ import { CheckboxComponent } from '@Components/checkbox.component';
 import { IconComponent } from '@Components/icon.component';
 import { BoxLoadingComponent } from '@Components/box-loading.component';
 import { BoxErrorComponent } from '@Components/box-error.component';
+import { EmployeeMealPipe } from '../pipes/employee-meal.pipe';
 
 @Component({
   selector: 'fortes-team-table',
@@ -16,6 +17,7 @@ import { BoxErrorComponent } from '@Components/box-error.component';
     CheckboxComponent,
     BoxLoadingComponent,
     BoxErrorComponent,
+    EmployeeMealPipe,
   ],
   styleUrl: 'team-table.component.scss',
   templateUrl: 'team-table.component.html',

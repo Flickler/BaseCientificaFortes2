@@ -1,0 +1,13 @@
+<div class="select_container" (click)="toggle()">
+  <p class="placeholder">{{ value() ? value()!.viewValue : label() }}</p>
+</div>
+
+@if (options()) {
+<div class="options_container" [class.active]="active()">
+  @for (option of options(); track $index) {
+  <span class="option" (click)="onChoice(option)">
+    {{ option.viewValue }}
+  </span>
+  }
+</div>
+}

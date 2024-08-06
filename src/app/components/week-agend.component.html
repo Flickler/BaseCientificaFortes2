@@ -1,0 +1,23 @@
+<button
+  class="agend_action"
+  (click)="
+    weekAgendFacade.previousWeek();
+    onAgendChange.emit(weekAgendFacade.weekCalendar())
+  "
+>
+  <fortes-icon name="chevronLeft" color="gray400" size="20" />
+</button>
+
+<span>{{ weekAgendFacade.start() }}</span>
+<span>à</span>
+<span>{{ weekAgendFacade.end() }}</span>
+
+<button
+  class="agend_action"
+  (click)="
+    weekAgendFacade.nextWeek();
+    onAgendChange.emit(weekAgendFacade.weekCalendar())
+  "
+>
+  <fortes-icon name="chevronRight" color="gray400" size="20" />
+</button>

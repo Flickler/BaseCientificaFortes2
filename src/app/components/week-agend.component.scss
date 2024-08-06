@@ -1,0 +1,31 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 2px solid $gray-100;
+  border-radius: $radius-1;
+  margin-inline: auto;
+  width: $clamp1;
+}
+
+span {
+  color: $gray-700;
+  @include paragraph3;
+}
+
+.agend_action {
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  width: fit-content;
+  aspect-ratio: 2/1;
+
+  &:focus,
+  &:hover {
+    background: $gray-100;
+  }
+}

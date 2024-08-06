@@ -9,6 +9,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  margin-inline: auto;
   width: $clamp2;
 }
 
@@ -17,7 +19,9 @@ main {
   flex-direction: column;
   justify-content: center;
   gap: $sz-16;
-  width: 100%;
+
+  margin-inline: auto;
+  width: $clamp2;
 }
 
 h1 {

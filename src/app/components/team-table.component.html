@@ -1,4 +1,4 @@
-<form [formGroup]="mealFacade.form">
+<form [formGroup]="mealFacade.form" (submit)="mealFacade.submit()">
   <div class="form_field search">
     <fortes-icon name="personSearch" color="gray400" size="20" />
     <input
@@ -23,7 +23,10 @@
       </fortes-box-error>
     }
 
-    @for(employee of mealFacade.employees.controls; track $index) {
+    @for(
+      employee of mealFacade.employees.controls; 
+      track mealFacade.mealTarget() + ':' + $index
+    ) {
       <div class="employee">
         <span class="employee_name">
           {{ mealFacade.meals()[$index].team.worker.name }}
@@ -41,5 +44,5 @@
     <span>{{ mealFacade.quantity() }}</span>
   </div>
 
-  <button type="submit">Salvar</button>
+  <button type="submit" [disabled]="mealFacade.loading()">Salvar</button>
 </form>
