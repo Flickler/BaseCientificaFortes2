@@ -27,7 +27,7 @@ A Base Científica, é um programa idealizado pela diretoria de educação do Ba
 
 | Deploy                                                      | Projeto                     |
 | :---------------------------------------------------------- | :-------------------------- |
-| [🔗](https://www.figma.com/@bambina)                        | `Figma Design de Interface` |
+| [🔗](https://www.figma.com/community/file/1421570851107580734/app-gerenciamento-de-refeicoes)                        | `Figma Design de Interface` |
 | [🔗](https://github.com/jacinoberto/fortes-alimentacao-api) | `Back-End API`              |
 | [🔗](https://github.com/Flickler/FortesAdministracao)       | `Front-End Angular`         |
 
